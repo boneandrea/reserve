@@ -2,11 +2,8 @@
     <td
         @pointerdown="startPress"
         @pointerup="endPress"
-        @pointermove="endPress"
-        @pointercancel="endPress"
-        @click="endPress"
         @contextmenu.prevent
-        :class="{reserved: isReserved, closed: isClosed}"
+        :class="{closed: status==='red', reserved: status==='blue'}"
     >
         <span>{{name}}</span>
     </td>
@@ -14,33 +11,48 @@
 <script setup>
  import { ref } from 'vue'
  const props = defineProps(['msg',"seat"])
- const isReserved=ref(false)
- const isClosed=ref(false)
- const name=ref(null)
+ const name=ref("")
+ const status=ref("white")
  let pressTimer=null
  const delay=500
+ // status: white/red/blue
  function startPress(){
      console.log("STARTPRESS")
+     name.value=pressTimer
      pressTimer = setTimeout(() => {
          onLongPress()
      }, delay)
  }
  function endPress(){
-     if (!pressTimer) return
      console.log(`${props.msg} / ${props.seat}`)
-     clearTimeout(pressTimer)
-     pressTimer = null
-     isReserved.value=!isReserved.value
-     if(!isReserved.value)
-         name.value=null
+
+     if(status.value==="white"){
+         status.value="blue"
+         return
+     }
+     if(status.value==="blue"){
+         status.value="white"
+         return
+     }
  }
  function onLongPress(){
-     if(isReserved.value){
+     if (!pressTimer) return
+     clearTimeout(pressTimer)
+     pressTimer = null
+
+     if(status.value==="blue"){
          name.value=prompt("患者名:")
          return
      }
-     isClosed.value=!isClosed.value
-     isReserved.value=false
+
+     if(status.value==="white"){
+         status.value="red"
+         return
+     }
+     if(status.value==="red"){
+         status.value="white"
+         return
+     }
  }
 </script>
 <style scoped>
