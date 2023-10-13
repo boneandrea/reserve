@@ -16,8 +16,8 @@
     <tbody>
       <tr v-for="i in times" :key="i">
         <th scope="row" data-time="i">{{i}}</th>
-        <td @click="hoge" :data-id="i" data-seat="1"></td>
-        <td @click="hoge" :data-id="i" data-seat="2"></td>
+        <Td :msg="i" seat="1"/>
+        <Td :msg="i" seat="2"/>
       </tr>
     </tbody>
   </table>
@@ -25,6 +25,7 @@
 </template>
 <script setup>
   import { ref } from 'vue'
+  import Td from './Td.vue'
   const times=ref([
   "9:00",
   "9:30",
@@ -59,10 +60,6 @@
   _d.setMonth(_d.getMonth()-1)
   today=`${_d.getFullYear()}/${_d.getMonth()+1}/${_d.getDate()} (${["日","月","火","水","木","金","土"][_d.getDay()]})`
   console.log(today)
-  }
-  function hoge(e){
-  const item=e.target
-  console.log(item.dataset.id + " seat:" +item.dataset.seat)
   }
 </script>
 <style scoped>
