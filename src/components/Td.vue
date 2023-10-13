@@ -11,46 +11,50 @@
 <script setup>
  import { ref } from 'vue'
  const props = defineProps(['msg',"seat"])
- const name=ref("")
+ const name=ref(null)
+
+ // status: white/red/blue
  const status=ref("white")
+
+ // timer
  let pressTimer=null
  const delay=500
- // status: white/red/blue
+
  function startPress(){
      console.log("STARTPRESS")
-     name.value=pressTimer
      pressTimer = setTimeout(() => {
          onLongPress()
      }, delay)
  }
  function endPress(){
-     console.log(`${props.msg} / ${props.seat}`)
+     if (!pressTimer) return
+     clearTimeout(pressTimer)
+     pressTimer = null
 
      if(status.value==="white"){
+         console.log(`${props.msg} / ${props.seat} is reserved`)
          status.value="blue"
          return
      }
      if(status.value==="blue"){
          status.value="white"
+         name.value=null
          return
      }
  }
  function onLongPress(){
-     if (!pressTimer) return
-     clearTimeout(pressTimer)
-     pressTimer = null
-
      if(status.value==="blue"){
          name.value=prompt("患者名:")
          return
      }
-
      if(status.value==="white"){
          status.value="red"
+         pressTimer = null
          return
      }
      if(status.value==="red"){
          status.value="white"
+         pressTimer = null
          return
      }
  }
