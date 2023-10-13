@@ -1,7 +1,7 @@
 <template>
     <td
-        @pointerdown="startPress"
-        @pointerup="endPress"
+        @touchstart="startPress"
+        @touchend="endPress"
         @contextmenu.prevent
         :class="{closed: status==='red', reserved: status==='blue'}"
     >
@@ -44,6 +44,7 @@
  }
  function onLongPress(){
      if(status.value==="blue"){
+         pressTimer = null
          name.value=prompt("患者名:")
          return
      }
