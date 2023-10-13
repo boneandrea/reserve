@@ -2,6 +2,7 @@
     <td
         @touchstart="startPress"
         @touchend="endPress"
+        @touchmove="movePress"
         @contextmenu.prevent
         :class="{closed: status==='red', reserved: status==='blue'}"
     >
@@ -25,6 +26,10 @@
      pressTimer = setTimeout(() => {
          onLongPress()
      }, delay)
+ }
+ function movePress(){
+     clearTimeout(pressTimer)
+     pressTimer = null
  }
  function endPress(){
      if (!pressTimer) return
