@@ -2,8 +2,8 @@
 <div class="container">
   <h1>{{today}}</h1>
   <div class="p-3 m-0 border-0 bd-example m-0 border-0">
-    <button type="button" class="btn btn-info" @click="prev()">Prev</button>
-    <button type="button" class="btn btn-info">Next</button>
+    <button type="button" class="btn btn-info" @click="prev()">前日</button>
+    <button type="button" class="btn btn-info">翌日</button>
   </div>
   <table class="table">
     <thead>
