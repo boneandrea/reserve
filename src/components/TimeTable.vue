@@ -1,11 +1,11 @@
 <template>
-    <div class="container">
-        <h1>{{today}}</h1>
-        <div class="p-3 m-0 border-0 bd-example m-0 border-0">
-            <button type="button" class="btn btn-info" @click="go(-1)">前日</button>
-            <button type="button" class="btn btn-info" @click="go(1)">翌日</button>
-        </div>
-        <table class="table">
+<div class="container">
+  <h1>{{today}}</h1>
+  <div class="btn-group">
+      <button type="button" class="btn btn-outline-primary" @click="go(-1)">前日</button>
+      <button type="button" class="btn btn-outline-primary" @click="go(1)">翌日</button>
+    </div>
+  <table class="table">
             <thead>
                 <tr>
                     <th scope="col"></th>
