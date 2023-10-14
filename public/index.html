@@ -6,6 +6,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <!-- OGP -->
+    <!-- ページの種類。
+    トップページなら"Website"、トップページ以外なら"Article"、
+         ブログなら"blog"を設定する -->
+    <meta property="og:type" content="website" />
+    <!-- ページの説明-->
+    <meta property="og:description" content="予約状況の管理を行う" />
+    <!-- ページのURL（絶対パス）-->
+    <meta property="og:url" content="https://peixe.biz/dental/reserve/#/" />
+    <!-- ページの名前-->
+    <meta property="og:site_name" content="予約管理" />
+
+    <!-- twitter用の設定-->
+    <!-- twitterでの表示形式を指定。
+         "summary", "summary_large_image", "app", "player card"の4種類がある。-->
+    <meta name="twitter:card" content="summary" />
+    <!-- /OGP -->
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://unpkg.com/vue-router@4"></script>
   </head>
