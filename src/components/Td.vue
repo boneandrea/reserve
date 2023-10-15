@@ -1,8 +1,8 @@
 <template>
     <td
-        @touchstart="startPress"
-        @touchend="endPress"
-        @touchmove="movePress"
+        @pointerdown="startPress"
+        @pointerup="endPress"
+        @pointermove="movePress"
         @contextmenu.prevent
         :class="{closed: status==='red', reserved: status==='blue'}"
     >
