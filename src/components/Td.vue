@@ -48,19 +48,17 @@
      }
  }
  function onLongPress(){
+     pressTimer = null
      if(status.value==="blue"){
-         pressTimer = null
          name.value=prompt("患者名:")
          return
      }
      if(status.value==="white"){
          status.value="red"
-         pressTimer = null
          return
      }
      if(status.value==="red"){
          status.value="white"
-         pressTimer = null
          return
      }
  }
