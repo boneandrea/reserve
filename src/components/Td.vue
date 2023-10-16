@@ -65,6 +65,7 @@
 </script>
 <style scoped>
  span{ color:#fff}
+ th,td{ width: 33%; }
  .reserved{ background: #45a }
  .closed{ background: #f00 }
 </style>
