@@ -4,7 +4,7 @@
         @pointerup="endPress"
         @pointermove="movePress"
         @contextmenu.prevent
-        :class="{closed: status==='red', reserved: status==='blue'}"
+        :class="{'table-danger': status==='red', 'table-success': status==='blue'}"
     >
         <span>{{name}}</span>
     </td>
@@ -64,8 +64,5 @@
  }
 </script>
 <style scoped>
- span{ color:#fff}
  th,td{ width: 33%; }
- .reserved{ background: #45a }
- .closed{ background: #f00 }
 </style>
